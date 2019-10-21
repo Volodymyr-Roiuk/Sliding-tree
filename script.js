@@ -4,7 +4,7 @@ class SiblingTree {
   }
 
   clickEvent(event) {
-    let ulList = document.querySelector('.tree');
+    const ulList = document.querySelector('.tree');
     let item = event.target.closest('.tree__item');
     
     if (!item || !ulList.contains(item)) {
@@ -13,7 +13,7 @@ class SiblingTree {
 
     let findResult = this.objArr.filter(obj => obj.propertyName === item.innerHTML)
 
-    if (findResult.length === 0) {
+    if (!findResult.length) {
       let propertyName = item.innerHTML;
       let html = item.parentElement.innerHTML;
       this.objArr.push({propertyName, html});
@@ -26,10 +26,10 @@ class SiblingTree {
   }
 
   addEvents() {
-    let list = document.querySelector('.tree');
+    const list = document.querySelector('.tree');
     list.addEventListener('click', this.clickEvent.bind(this));
   }
 }
 
-let s = new SiblingTree();
+const s = new SiblingTree();
 s.addEvents();
